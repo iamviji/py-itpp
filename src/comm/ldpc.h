@@ -24,7 +24,7 @@ namespace py = pybind11;
 
 void generate_pybind_wrapper_for_itpp_ldpc_code_class( py::module &m) {
 
-  py::class_<itpp::LDPC_Code>( m, "LDPC_Code" )
+  py::class_<itpp::LDPC_Code>( m, "ldpc_codec" )
     .def( py::init<>() )
 
     .def("set_code", &itpp::LDPC_Code::set_code
