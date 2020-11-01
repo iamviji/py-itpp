@@ -34,7 +34,7 @@ void generate_pybind_wrapper_for_itpp_ldpc_code_class( py::module &m) {
     .def("set_exit_conditions", &itpp::LDPC_Code::set_exit_conditions
                          ,  py::arg( "max_iters"), py::arg("syndr_check_each_iter") = true, py::arg("syndr_check_at_start")=false)
 
-    .def("encode", static_cast<void (itpp::LDPC_Code::*)(const itpp::vec &, itpp::bvec&)>(&itpp::LDPC_Code::encode)
+    .def("encode", static_cast<void (itpp::LDPC_Code::*)(const itpp::bvec&, itpp::bvec&)>(&itpp::LDPC_Code::encode)
                  	, py::arg( "input"), py::arg("output"))
 
     .def("decode", static_cast<void (itpp::LDPC_Code::*)(const itpp::vec&, itpp::bvec&)>(&itpp::LDPC_Code::decode)
