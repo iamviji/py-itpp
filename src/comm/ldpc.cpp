@@ -19,5 +19,5 @@
 
 PYBIND11_MODULE(ldpc, m)
 {
-  generate_pybind_wrapper_for_itpp_ldpc_codec_class(m);
+  generate_pybind_wrapper_for_itpp_ldpc_code_class(m);
 }
