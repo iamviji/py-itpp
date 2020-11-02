@@ -36,7 +36,7 @@ void generate_pybind_wrapper_for_itpp_ldpc_gen_class( py::module &m) {
   py::class_<itpp::LDPC_Code>( m, "ldpc_code" )
     .def( py::init<>() )
 
-    .def( py::init<const LDPC_Parity* const, LDPC_Generator* const py::optional<bool> >())
+    .def( py::init<const itpp::LDPC_Parity* const, itpp::LDPC_Generator* const, py::optional<bool> >())
 
     .def("set_code", &itpp::LDPC_Code::set_code
                          ,  py::arg( "H"), py::arg("G"), py::arg("perform_integrity_check") = true)
