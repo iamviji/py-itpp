@@ -30,7 +30,7 @@ void generate_pybind_wrapper_for_itpp_ldpc_gen_class( py::module &m) {
   ;
 
   py::class_<itpp::LDPC_Generator_Systematic>( m, "ldpc_gen_systematic" )
-    .def( py::init<LDPC_Parity*, py::optional<bool, const itpp::ivec&> >() )
+    .def( py::init<itpp::LDPC_Parity*, py::optional<bool, const itpp::ivec&> >() )
   ;
 
   py::class_<itpp::LDPC_Code>( m, "ldpc_code" )
