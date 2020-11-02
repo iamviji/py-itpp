@@ -22,6 +22,38 @@
 
 namespace py = pybind11;
 
+
+void generate_pybind_wrapper_for_itpp_ldpc_gen_class( py::module &m) {
+
+  py::class_<itpp::LDPC_Parity_Regular>( m, "ldpc_parity_regular" )
+    .def( py::init<short, short>() )
+  ;
+
+  py::class_<itpp::LDPC_Generator_Systematic>( m, "ldpc_gen_systematic" )
+    .def( py::init<LDPC_Parity*, py::optional<bool, const itpp::ivec&> >() )
+  ;
+
+  py::class_<itpp::LDPC_Code>( m, "ldpc_code" )
+    .def( py::init<>() )
+
+    .def( py::init<const LDPC_Parity* const, LDPC_Generator* const py::optional<bool> >())
+
+    .def("set_code", &itpp::LDPC_Code::set_code
+                         ,  py::arg( "H"), py::arg("G"), py::arg("perform_integrity_check") = true)
+    .def("set_decoding_method", &itpp::LDPC_Code::set_decoding_method
+                         ,  py::arg( "method"))
+    .def("set_exit_conditions", &itpp::LDPC_Code::set_exit_conditions
+                         ,  py::arg( "max_iters"), py::arg("syndr_check_each_iter") = true, py::arg("syndr_check_at_start")=false)
+
+    .def("encode", static_cast<void (itpp::LDPC_Code::*)(const itpp::bvec&, itpp::bvec&)>(&itpp::LDPC_Code::encode)
+                 	, py::arg( "input"), py::arg("output"))
+
+    .def("decode", static_cast<void (itpp::LDPC_Code::*)(const itpp::vec&, itpp::bvec&)>(&itpp::LDPC_Code::decode)
+                 	, py::arg( "llr_in"), py::arg("syst_bits"))
+  ;
+}
+
+
 void generate_pybind_wrapper_for_itpp_ldpc_code_class( py::module &m) {
 
   py::class_<itpp::LDPC_Code>( m, "ldpc_code" )
