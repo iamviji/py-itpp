@@ -34,7 +34,6 @@ void generate_pybind_wrapper_for_itpp_ldpc_code_class ( py::module &m) {
   ;
 
   py::class_<itpp::LDPC_Generator>( m, "ldpc_generator" )
-    .def( py::init<const std::string&>(), py::arg("type_in")="")
 	  ;
 
   py::class_<itpp::LDPC_Generator_Systematic, itpp::LDPC_Generator>( m, "ldpc_gen_systematic" )
