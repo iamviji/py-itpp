@@ -23,7 +23,6 @@
 namespace py = pybind11;
 
 void generate_pybind_wrapper_for_itpp_ldpc_code_class ( py::module &m) {
-
   py::class_<itpp::LDPC_Parity>( m, "ldpc_parity")
     .def( py::init<>())
   ;
