@@ -22,16 +22,12 @@
 
 namespace py = pybind11;
 
-
 void generate_pybind_wrapper_for_itpp_ldpc_code_class ( py::module &m) {
-
   py::class_<itpp::LDPC_Parity>( m, "ldpc_parity")
     .def( py::init<>())
   ;
 
-  py::class_<itpp::LDPC_Parity_Unstructured, itpp::LDPC_Parity>( m, "ldpc_parity_unstructured" )
-    .def( py::init<>())
-  ;
+  py::class_<itpp::LDPC_Parity_Unstructured, itpp::LDPC_Parity>( m, "ldpc_parity_unstructured" );
 
   py::class_<itpp::LDPC_Parity_Regular, itpp::LDPC_Parity_Unstructured>( m, "ldpc_parity_regular" )
     .def( py::init<short, short, short, const std::string&, const itpp::ivec&>(), py::arg("Nvar"), py::arg("k"), py::arg("l"), py::arg("method")="rand", py::arg("options")= "200 6" )
