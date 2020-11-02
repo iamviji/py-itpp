@@ -22,14 +22,6 @@
 
 namespace py = pybind11;
 
-class PyLDPC_Parity_Unstructured : public LDPC_Parity_Unstructured
-{
-	public:
-		using LDPC_Parity_Unstructured;
-
-	void display_stats () const override {PYBIND11_OVERLOAD_PURE(void, LDPC_Parity_Unstructured, display_stats)};
-};
-
 void generate_pybind_wrapper_for_itpp_ldpc_code_class ( py::module &m) {
 
   py::class_<itpp::LDPC_Parity>( m, "ldpc_parity")
