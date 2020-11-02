@@ -26,7 +26,7 @@ namespace py = pybind11;
 void generate_pybind_wrapper_for_itpp_ldpc_gen_class( py::module &m) {
 
   py::class_<itpp::LDPC_Parity_Regular>( m, "ldpc_parity_regular" )
-    .def( py::init<short, short>() )
+    .def( py::init<short, short, short, const std::string&, const itpp::ivec&>(), py::arg("Nvar"), py::arg("k"), py::arg("l"), py::arg("method")="rand", py::arg("options")= "200 6" )
   ;
 
   py::class_<itpp::LDPC_Generator_Systematic>( m, "ldpc_gen_systematic" )
