@@ -29,7 +29,7 @@ void generate_pybind_wrapper_for_itpp_bch_class ( py::module &m) {
     .def("encode", static_cast<void (itpp::BCH::*)(const itpp::bvec&, itpp::bvec&)>(&itpp::BCH::encode)
                  	, py::arg( "uncoded_bits"), py::arg("coded_bits"))
 
-    .def("decode", static_cast<void (itpp::BCH:*)(const itpp::bvec&, itpp::bvec&)>(&itpp::BCH::decode)
+    .def("decode", static_cast<void (itpp::BCH::*)(const itpp::bvec&, itpp::bvec&)>(&itpp::BCH::decode)
                  	, py::arg( "coded_bits"), py::arg("decoded_bits"))
   ;
 }
