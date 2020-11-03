@@ -52,15 +52,24 @@ void generate_pybind_wrapper_for_itpp_ldpc_code_class ( py::module &m) {
     .def("set_exit_conditions", &itpp::LDPC_Code::set_exit_conditions
                          ,  py::arg( "max_iters"), py::arg("syndr_check_each_iter") = true, py::arg("syndr_check_at_start")=false)
 
-    .def("encode", static_cast<void (itpp::LDPC_Code::*)(const itpp::bvec&, itpp::bvec&)>(&itpp::LDPC_Code::encode)
-                 	, py::arg( "input"), py::arg("output"))
+    .def("encode", static_cast<itpp::bvec (itpp::LDPC_Code::*)(const itpp::bvec&)>(&itpp::LDPC_Code::encode)
+                 	, py::arg( "input"))
 
-    .def("decode", static_cast<void (itpp::LDPC_Code::*)(const itpp::vec&, itpp::bvec&)>(&itpp::LDPC_Code::decode)
-                 	, py::arg( "llr_in"), py::arg("syst_bits"))
+    .def("decode", static_cast<itpp::bvec (itpp::LDPC_Code::*)(const itpp::vec&)>(&itpp::LDPC_Code::decode)
+                 	, py::arg( "llr_in"))
+
     .def("bp_decode", static_cast<int (itpp::LDPC_Code::*)(const itpp::QLLRvec&, itpp::LLRout&)>(&itpp::LDPC_Code::bp_decode)
                  	, py::arg( "LLRin"), py::arg("LLRout"))
+
+    .def("decode_soft_out", static_cast<itpp::vec (itpp::LDPC_Code::*)(const itpp::vec&)>(&itpp::LDPC_Code::decode_soft_out)
+                 	, py::arg( "llr_in"))
+
     .def("get_nvar", static_cast<int (itpp::LDPC_Code::*)() const>(&itpp::LDPC_Code::get_nvar))
+
     .def("get_ncheck", static_cast<int (itpp::LDPC_Code::*)() const>(&itpp::LDPC_Code::get_ncheck))
+
+    .def("get_rate", static_cast<double (itpp::LDPC_Code::*)() const>(&itpp::LDPC_Code::get_rate))
+
     .def("syndrome_check", static_cast<bool (itpp::LDPC_Code::*)(const itpp::bvec&) const>(&itpp::LDPC_Code::syndrome_check))
   ;
 }
