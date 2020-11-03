@@ -57,8 +57,8 @@ void generate_pybind_wrapper_for_itpp_ldpc_code_class ( py::module &m) {
 
     .def("decode", static_cast<void (itpp::LDPC_Code::*)(const itpp::vec&, itpp::bvec&)>(&itpp::LDPC_Code::decode)
                  	, py::arg( "llr_in"), py::arg("syst_bits"))
-    .def("get_nvar", &itpp::LDPC_Code::get_nvar)
-    .def("get_ncheck", &itpp::LDPC_Code::get_ncheck)
+    .def("get_nvar", static_cast<int (itpp::LDPC_Code::*)()>(&itpp::LDPC_Code::get_nvar))
+    .def("get_ncheck", static_cast<int (itpp::LDPC_Code::*)()>(&itpp::LDPC_Code::get_ncheck))
   ;
 }
 
