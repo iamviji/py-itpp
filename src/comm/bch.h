@@ -25,7 +25,6 @@ namespace py = pybind11;
 void generate_pybind_wrapper_for_itpp_bch_class ( py::module &m) {
   py::class_<itpp::BCH>( m, "bch")
     .def( py::init<short, short, bool>(), py::arg("in_n"), py::arg("in_t"), py::arg("sys")=false)
-  ;
 
     .def("encode", static_cast<void (itpp::BCH::*)(const itpp::bvec&, itpp::bvec&)>(&itpp::BCH::encode)
                  	, py::arg( "uncoded_bits"), py::arg("coded_bits"))
