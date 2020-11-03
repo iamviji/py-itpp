@@ -58,7 +58,7 @@ void generate_pybind_wrapper_for_itpp_ldpc_code_class ( py::module &m) {
     .def("decode", static_cast<itpp::bvec (itpp::LDPC_Code::*)(const itpp::vec&)>(&itpp::LDPC_Code::decode)
                  	, py::arg( "llr_in"))
 
-    .def("bp_decode", static_cast<int (itpp::LDPC_Code::*)(const itpp::QLLRvec&, itpp::LLRout&)>(&itpp::LDPC_Code::bp_decode)
+    .def("bp_decode", static_cast<int (itpp::LDPC_Code::*)(const itpp::QLLRvec&, itpp::QLLRvec&)>(&itpp::LDPC_Code::bp_decode)
                  	, py::arg( "LLRin"), py::arg("LLRout"))
 
     .def("decode_soft_out", static_cast<itpp::vec (itpp::LDPC_Code::*)(const itpp::vec&)>(&itpp::LDPC_Code::decode_soft_out)
