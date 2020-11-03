@@ -59,6 +59,7 @@ void generate_pybind_wrapper_for_itpp_ldpc_code_class ( py::module &m) {
                  	, py::arg( "llr_in"), py::arg("syst_bits"))
     .def("get_nvar", static_cast<int (itpp::LDPC_Code::*)() const>(&itpp::LDPC_Code::get_nvar))
     .def("get_ncheck", static_cast<int (itpp::LDPC_Code::*)() const>(&itpp::LDPC_Code::get_ncheck))
+    .def("syndrome_check", static_cast<bool (itpp::LDPC_Code::*)(const itpp::bvec&) const>(&itpp::LDPC_Code::syndrome_check))
   ;
 }
 
